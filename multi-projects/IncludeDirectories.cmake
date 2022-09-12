@@ -1,0 +1,8 @@
+file(GLOB_RECURSE h_files *.h)
+set(include_folds ${PROJECT_SOURCE_DIR})
+foreach(h_file ${h_files})
+    get_filename_component(dir ${h_file} DIRECTORY)
+    list(APPEND include_folds ${dir})
+endforeach(h_file ${h_files})
+list(REMOVE_DUPLICATES include_folds)
+include_directories(${include_folds})
